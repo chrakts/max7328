@@ -23,6 +23,7 @@ class MAX7328
 	private:
 
 	TWI_MasterDriver_t *twi;
+	uint8_t	oldValue;
 	uint8_t	twiAddress;
 	uint16_t raw_data;
 	double illuminance;
@@ -49,6 +50,7 @@ class MAX7328
   void clearOutput(uint8_t pin);
 
   void newValue(uint8_t val);
+  void updateValue(uint8_t val);
 	uint8_t getGPIO();
 
 };

@@ -83,6 +83,14 @@ void MAX7328::updateGPIO()
 void MAX7328::newValue(uint8_t val)
 {
   TWI_MasterWrite(twi,twiAddress,&val,1);
+  oldValue = val;
+}
+
+void MAX7328::updateValue(uint8_t val)
+{
+  if(val!=oldValue)
+    TWI_MasterWrite(twi,twiAddress,&val,1);
+  oldValue=val;
 }
 
 uint8_t MAX7328::getGPIO()
